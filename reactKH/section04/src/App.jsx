@@ -1,13 +1,22 @@
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Main from './components/Main'
+import { useState } from "react";
+import Count from "../../section06/src/components/count";
+import CountButton from "../../section06/src/components/CountButton";
+import Register from './components/Register'
+import HookExam from "./components/HookExam";
+
+
+
 
 export default function App() {
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <div>
+        <HookExam />
+        <Register />
+
+        <Count />
+        <CountButton />
+      </div>
     </>
   )
-}
+};

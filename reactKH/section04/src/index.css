@@ -63,12 +63,7 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #808080;
     color: #ffffff;
   }
 
-  #plus, #minus {
-    background-color: rgb(0, 0, 89);
-    margin: 10px;
-  }
 }
