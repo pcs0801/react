@@ -1,20 +1,20 @@
 import { useState } from 'react';
 
 const User = ({ item, index, onUpdate, onDelete }) => {
-  const [isEdit, setIsEdit] = useState(false); // 수정 모드 여부
-  const [editUser, setEditUser] = useState(item); // 수정할 데이터
+  const [isEdit, setIsEdit] = useState(false);
+  const [editUser, setEditUser] = useState(item);
 
   const handleChange = (e) => {
     setEditUser({ ...editUser, [e.target.name]: e.target.value });
   };
 
   const handleSave = () => {
-    onUpdate(index, editUser); // 상위로 업데이트 요청
+    onUpdate(index, editUser);
     setIsEdit(false);
   };
 
   const handleCancel = () => {
-    setEditUser(item); // 원래 값으로 초기화
+    setEditUser(item);
     setIsEdit(false);
   };
 

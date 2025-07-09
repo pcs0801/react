@@ -12,7 +12,9 @@ const Table = (props) => {
             <th>나이</th>
             <th>성별</th>
             <th>전화번호</th>
-            <th>액션</th> {/* 수정/삭제용 컬럼 추가 */}
+            <th>액션</th> {
+
+            }
           </tr>
         </thead>
         <tbody>
@@ -21,8 +23,8 @@ const Table = (props) => {
               key={"user" + index}
               item={item}
               index={index}
-              onUpdate={props.onUpdate}  
-              onDelete={props.onDelete}  // 👈 전달
+              onUpdate={props.onUpdate}
+              onDelete={props.onDelete}
             />
           ))}
         </tbody>
