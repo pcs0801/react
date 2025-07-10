@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Edit from './components/Edit';
 import List from './components/List';
 
-import { useState, useRef, useReducer, useCallback } from 'react';
+import { useState, useRef, useReducer, useCallback, createContext, useMemo } from 'react';
 
 const mockData = [
   { id: 0, isDone: false, content: 'React 공부하기', date: new Date().getTime() },
@@ -22,6 +22,8 @@ function reducer(todos, action) {
   }
 }
 
+export const TodoState = createContext();
+export const TodoDispatch = createContext();
 
 function App() {
   const [todos, dispatch] = useReducer(reducer, mockData);
@@ -34,6 +36,10 @@ function App() {
         id: idRef.current++, isDone: false, content: content, date: new Date().getTime()
       }
     });
+  }, []);
+
+  const memorizeDispatch = useMemo(() => {
+    return { onInsert, onUpdate, onDelete };
   }, []);
 
   const onUpdate = useCallback((tagId) => {
@@ -51,11 +57,13 @@ function App() {
   return (
     <>
       <div className='App'>
-
         <Header />
-        <Edit onInsert={onInsert} />
-        <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
-
+        <TodoStateContext.Provider value={{ todos }}>
+          <TodoDispatchContext.Provider value={memorizeDispatch}>
+            <Edit />
+            <List />
+          </TodoDispatchContext.Provider>
+        </TodoStateContext.Provider>
       </div>
     </>
   )
