@@ -2,6 +2,7 @@ import { Container } from 'react-bootstrap';
 import Header from '../../include/Header';
 import { useCallback } from 'react';
 import { createSearchParams, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import ReadComponent from '../../components/todo/ReadComponent';
 
 const ReadPage = () => {
     const { tno } = useParams();
@@ -20,11 +21,7 @@ const ReadPage = () => {
     return (
         <Container>
             <Header />
-            To do ReadPage {tno}
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-outline-success" type="button" onClick={() => moveToModify(tno)}>To Modify Menu</button>
-                <button class="btn btn-outline-secondary" type="button" onClick={() => moveToList()}>To List Menu</button>
-            </div>
+            <ReadComponent tno={tno} />
         </Container>
     );
 };
