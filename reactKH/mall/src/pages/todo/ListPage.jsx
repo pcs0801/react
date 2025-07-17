@@ -1,7 +1,7 @@
 
 import { Container } from 'react-bootstrap';
 import Header from '../../include/Header';
-import ListComponent from '../../components/ListComponent';
+import ListComponent from '../../components/todo/ListComponent';
 import { useSearchParams } from 'react-router-dom';
 
 const ListPage = () => {
@@ -11,11 +11,8 @@ const ListPage = () => {
     return (
         <Container>
             <Header />
-            <div className="d-grid gap-2 mt-3">
-                {`Todo List page components page: ${page} size : ${size}`}
-                <ListComponent />
-            </div>
-        </Container>
+            <ListComponent page={page} size={size} />
+        </Container >
     );
 };
 export default ListPage;

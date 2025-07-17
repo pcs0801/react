@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import Header from '../../include/Header';
-import AddComponent from '../../components/AddComponent';
+import AddComponent from '../../components/todo/AddComponent';
 
 const AddPage = () => {
     return (
