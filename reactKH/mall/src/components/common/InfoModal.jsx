@@ -5,7 +5,7 @@ const InfoModal = ({ show, onHide, title, content, callbackFn }) => {
     return (
         <Modal show={show} onHide={onHide} size="sm" aria-labelledby="contained-modal-title-vcenter" centered >
             <Container>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

@@ -40,6 +40,43 @@ const useCustomMove = () => {
             pathname: `../todo/read/${num}`, search: queryDefault
         })
     }
-    return { moveToList, moveToModify, moveToRead, page, size }
-}
+
+    const moveToProductList = (pageParam) => {
+        let queryStr = '';
+        if (pageParam) {
+            const pageNum = getNum(pageParam.page, page);
+            const sizeNum = getNum(pageParam.size, size);
+            queryStr = createSearchParams({
+                page: pageNum, size: sizeNum,
+            }).toString();
+        } else {
+            queryStr = queryDefault;
+        }
+        navigate({
+            pathname: `../product/list`, search: queryStr,
+        });
+        setRefresh(!refresh);
+    };
+
+    const moveToProductModify = (num) => {
+        console.log(queryDefault);
+        navigate({
+            pathname: `../product/modify/${num}`, search: queryDefault,
+        });
+    };
+
+    const moveToProductRead = (num) => {
+        console.log(queryDefault);
+        navigate({
+            pathname: `../product/read/${num}`, search: queryDefault,
+        });
+    };
+
+
+
+    return {
+        moveToProductList, moveToList, moveToModify, moveToProductModify, moveToProductRead, moveToRead, page, size, refresh,
+    };
+};
+
 export default useCustomMove
