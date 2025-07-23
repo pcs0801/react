@@ -1,26 +1,33 @@
 import { useEffect, useState, useRef } from 'react';
 import { Container, Card, Row, Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import { deleteOne, getOne, putOne } from '../../api/ProductApi';
+import { deleteOne, putOne, getOne } from '../../api/ProductApi';
 import FetchingModal from '../common/FetchingModal';
 import { API_SERVER_HOST } from '../../api/todoApi';
 import useCustomMove from '../../hooks/useCustomMove';
-import ResultModal from '../common/ResultModal';
+import InfoModal from '../common/InfoModal';
 
 const initState = {
     pno: 0,
     pname: '',
-    pdesc: '', price: 0, delFlag: false,
+    pdesc: '',
+    price: 0,
+    delFlag: false,
     uploadFileNames: [],
 };
+
 const host = API_SERVER_HOST;
 const ModifyComponent = ({ pno }) => {
-    const [product, setProduct] = useState(initState); const [fetching, setFetching] = useState(false); const uploadRef = useRef();
+    const [product, setProduct] = useState(initState);
+    const [fetching, setFetching] = useState(false);
+    const uploadRef = useRef();
     const [result, setResult] = useState(null);
     const { moveToProductRead, moveToProductList } = useCustomMove();
     useEffect(() => {
-        setFetching(true); getOne(pno).then((data) => {
-            setProduct(data); setFetching(false);
+        setFetching(true);
+        getOne(pno).then((data) => {
+            setProduct(data);
+            setFetching(false);
         });
     }, [pno]);
     const handleChangeProduct = (e) => {
@@ -29,7 +36,8 @@ const ModifyComponent = ({ pno }) => {
     const deleteOldImages = (imageName) => {
         const resultFileNames = product.uploadFileNames.filter(fileName => fileName !== imageName
         );
-        product.uploadFileNames = resultFileNames; setProduct({ ...product });
+        product.uploadFileNames = resultFileNames;
+        setProduct({ ...product });
     };
     const handleClickModify = () => {
         const files = uploadRef.current.files;
@@ -37,8 +45,9 @@ const ModifyComponent = ({ pno }) => {
         for (let i = 0; i < files.length; i++) {
             formData.append('files', files[i]);
         }
-        formData.append('pname', product.pname); formData.append('pdesc', product.pdesc);
-        formData.append('price', product.price); formData.append('delFlag', product.delFlag);
+        formData.append('pname', product.pname);
+        formData.append('pdesc', product.pdesc);
+        formData.append('price', product.price);
         for (let i = 0; i < product.uploadFileNames.length; i++) {
             formData.append('uploadFileNames', product.uploadFileNames[i]);
         }
@@ -48,7 +57,8 @@ const ModifyComponent = ({ pno }) => {
         });
     };
     const handleClickDelete = () => {
-        setFetching(true); deleteOne(pno).then((data) => {
+        setFetching(true);
+        deleteOne(pno).then((data) => {
             setResult('Deleted');
             setFetching(false);
         });
@@ -65,13 +75,20 @@ const ModifyComponent = ({ pno }) => {
         <Container className="p-5">
             {fetching ? <FetchingModal /> : <></>}
             {result ? (
-                <ResultModal title={`${result}`}
+                <InfoModal show={true} title={`${result}`}
                     content={'정상적으로 처리되었습니다.'}
                     callbackFn={closeModal}
                 />) : (
                 <></>
             )}
             <Form>
+                <Form.Group className="mb-3">
+                    <Form.Label>PNO</Form.Label>
+                    <Form.Control name="pno"
+                        defaultValue={product.pname} type="number" value={product.pno} disabled
+                        onChange={handleChangeProduct}
+                    />
+                </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>PNAME</Form.Label>
                     <Form.Control name="pname"
@@ -93,15 +110,6 @@ const ModifyComponent = ({ pno }) => {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <Form.Label>DELETE</Form.Label>
-                    <Form.Select name="delFlag"
-                        defaultValue={product.delFlag ? '사용' : '삭제'} onChange={handleChangeProduct}
-                    >
-                        <option value={false}>사용</option>
-                        <option value={true}>삭제</option>
-                    </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
                     <Form.Label>Files</Form.Label>
                     <Form.Control ref={uploadRef} type="file" multiple="true" />
                 </Form.Group>
@@ -113,7 +121,7 @@ const ModifyComponent = ({ pno }) => {
                             <Button variant="primary"
                                 onClick={() => deleteOldImages(imgFile)}
                             >
-                                DELETE
+                                삭제
                             </Button>
                             <Card.Body>
                                 <img alt="img"
@@ -125,11 +133,11 @@ const ModifyComponent = ({ pno }) => {
                 ))}
             </Row>
             <div className="d-flex justify-content-center gap-2 mt-5">
-                <button className="btn btn-outline-secondary" type="button" onClick={handleClickDelete} > DELETE
+                <button className="btn btn-outline-secondary" type="button" onClick={handleClickDelete} > 삭제하기
                 </button>
-                <button className="btn btn-danger" type="button" onClick={handleClickModify} > MODIFY
+                <button className="btn btn-danger" type="button" onClick={handleClickModify} > 수정하기
                 </button>
-                <button className="btn btn-primary" type="text" onClick={moveToProductList} >LIST
+                <button className="btn btn-primary" type="text" onClick={moveToProductList} >리스트 보기
                 </button>
             </div>
         </Container >
