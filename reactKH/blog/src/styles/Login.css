@@ -1,0 +1,167 @@
+.wrap {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0 auto;
+            width: 100vw;
+            height: 100vh;
+            border: 3px solid red;
+        }
+
+        .head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 15%;
+            background-color: black;
+            color: white;
+            border: 1px solid red;
+        }
+
+        .head>.head_left,
+        .head>.head_right {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid blue;
+        }
+
+        #blogName {
+            font-size: 2.5rem;
+        }
+
+        .head>.head_right>ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .head>.head_right>ul:hover {
+            cursor: pointer;
+        }
+
+        .head>.head_right>ul>li {
+            padding: 10px 40px;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #logo {
+            width: 100px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            height: 75%;
+            border: 1px solid red;
+        }
+
+        .main>.login {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            height: 40%;
+            border: 2px solid rgb(182, 182, 182);
+            border-radius: 10%;
+        }
+
+        .main>.login i {
+            background-color: black;
+            color: white;
+            font-size: 1.2rem;
+            margin-left: 10px;
+            padding: 10px 0px;
+        }
+
+        .main>.login>.inputEmail,
+        .main>.login>.inputPw {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 60%;
+            background-color: black;
+            border: 1px dotted red;
+            margin: 5px;
+            border-radius: 10px;
+        }
+
+        .main>.login>.inputEmail>input,
+        .main>.login>.inputPw>input {
+            border-radius: 5px;
+            width: 80%;
+            height: 30px;
+            padding-left: 5px;
+        }
+
+        .main>.login>.rememberEmailCheckBox {
+            width: 50%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            border: 1px solid blue;
+        }
+
+        .main>.login>.rememberEmailCheckBox>label>p {
+            font-size: 0.8rem;
+        }
+
+        .main>.login>.login_buttons>#loginBtn {
+            color: rgb(0, 0, 0);
+            background-color: rgb(230, 229, 229);
+            border-radius: 5px;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            margin: 10px 0px;
+            border: none;
+            box-shadow: 3px 2px 3px #666;
+        }
+
+        .main>.login>.login_buttons>#signUpBtn {
+            color: white;
+            background-color: black;
+            border-radius: 5px;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            margin: 10px 0px;
+            border: none;
+            box-shadow: 3px 2px 3px #666;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+            background-color: black;
+            color: white;
+            border: 1px solid red;
+        }
+
+        .footer>.footer_left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            height: 100%;
+            border: 1px solid blue;
+
+        }
+
+        .footer>.footer_right,
+        .footer>.footer_center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            height: 100%;
+            border: 1px solid blue;
+            list-style-type: disc;
+        }

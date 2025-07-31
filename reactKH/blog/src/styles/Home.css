@@ -1,0 +1,94 @@
+.wrap {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0 auto;
+            width: 100vw;
+            height: 100vh;
+            border: 3px solid red;
+        }
+
+        .head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 15%;
+            background-color: black;
+            color: white;
+            border: 1px solid red;
+        }
+
+        .head>.head_left,
+        .head>.head_right {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid blue;
+        }
+
+        #blogName {
+            font-size: 2.5rem;
+        }
+
+        .head>.head_right>ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .head>.head_right>ul:hover {
+            cursor: pointer;
+        }
+
+        .head>.head_right>ul>li {
+            padding: 10px 40px;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #logo {
+            width: 100px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(255, 255, 255);
+            width: 100%;
+            height: 75%;
+            border: 1px solid red;
+        }
+
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10%;
+            background-color: black;
+            color: white;
+            border: 1px solid red;
+        }
+
+        .footer>.footer_left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            height: 100%;
+            border: 1px solid blue;
+
+        }
+
+        .footer>.footer_right,
+        .footer>.footer_center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            height: 100%;
+            border: 1px solid blue;
+            list-style-type: disc;
+        }
